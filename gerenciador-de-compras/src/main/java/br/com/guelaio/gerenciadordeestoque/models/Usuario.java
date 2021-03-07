@@ -34,6 +34,10 @@ public class Usuario implements UserDetails {
 
     @NotEmpty
     private boolean admin;
+    
+    public Usuario() {
+	
+    }
 
     public Usuario(String nome, String username, String password, boolean admin) {
 	setNome(nome);

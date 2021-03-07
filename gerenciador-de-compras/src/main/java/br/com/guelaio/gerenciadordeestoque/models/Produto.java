@@ -39,6 +39,10 @@ public class Produto {
     @Positive
     @Column(name = "peso_volume")
     private double pesoVolume;
+    
+    public Produto() {//O JPA exige construtor padrão vazio
+	
+    }
 
     public Produto(String nome, UnidadeDeMedida unidadeDeMedida, CategoriaProduto categoria, double pesoVolume) {
 	setNome(nome);

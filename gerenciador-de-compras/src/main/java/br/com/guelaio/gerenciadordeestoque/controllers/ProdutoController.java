@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.guelaio.gerenciadordeestoque.enums.CategoriaProduto;
 import br.com.guelaio.gerenciadordeestoque.models.Produto;
 import br.com.guelaio.gerenciadordeestoque.services.ProdutoService;
 
@@ -31,8 +32,8 @@ public class ProdutoController {
 	return ResponseEntity.ok(produtoService.findAll());
     }
 
-    @GetMapping("/buscarPorCategoria/{categoria}")
-    public ResponseEntity<List<Produto>> findByCategoria(@PathVariable String categoriaDeProduto) {
+    @GetMapping("/buscarPorCategoria/{categoriaDeProduto}")
+    public ResponseEntity<List<Produto>> findByCategoria(@PathVariable CategoriaProduto categoriaDeProduto) {
 	return ResponseEntity.ok(produtoService.findByCategoria(categoriaDeProduto));
     }
 

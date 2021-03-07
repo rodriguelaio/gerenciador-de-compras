@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.guelaio.gerenciadordeestoque.enums.CategoriaProduto;
 import br.com.guelaio.gerenciadordeestoque.exceptions.ResourceNotFoundException;
 import br.com.guelaio.gerenciadordeestoque.models.Produto;
 import br.com.guelaio.gerenciadordeestoque.repositories.ProdutoRepository;
@@ -21,7 +22,7 @@ public class ProdutoServiceImplementation implements ProdutoService {
 		.orElseThrow(() -> new ResourceNotFoundException("Produto não localizado."));
     }
 
-    public List<Produto> findByCategoria(String categoriaDeProduto) {
+    public List<Produto> findByCategoria(CategoriaProduto categoriaDeProduto) {
 	return produtoRepository.findByCategoria(categoriaDeProduto)
 		.orElseThrow(() -> new ResourceNotFoundException("Nenhum produto localizado."));
     }

@@ -52,7 +52,7 @@ public class AutenticacaoViaTokenFilter extends OncePerRequestFilter {
         List<GrantedAuthority> authorityListUser = AuthorityUtils.createAuthorityList("ROLE_USER");
         UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(usuario, null, usuario.isAdmin() ? authorityListAdmin : authorityListUser);
 
-        //CONSIDERE QUE EST¡ AUTENTICADO
+        //CONSIDERE QUE EST√Å AUTENTICADO
         SecurityContextHolder.getContext().setAuthentication(authentication);
     }
 }

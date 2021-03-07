@@ -31,15 +31,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     private CustomUserDetailsServiceImplementation customUserDetailsService;
 
-//    @Autowired
-//    public SecurityConfiguration(TokenService tokenService, UsuarioRepository usuarioRepository,
-//	    CustomUserDetailsServiceImplementation customUserDetailsService) {
-//	this.tokenService = tokenService;
-//	this.usuarioRepository = usuarioRepository;
-//	this.customUserDetailsService = customUserDetailsService;
-//    }
-
-    // NECESSÁRIO PARA FAZER A INJECAO DE DEPENDENCIA O AuthenticationManager no
+    // NECESSï¿½RIO PARA FAZER A INJECAO DE DEPENDENCIA O AuthenticationManager no
     // CONTROLLER
     @Bean
     @Override
@@ -51,13 +43,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 	http.authorizeRequests().antMatchers(HttpMethod.POST, "/auth").permitAll().anyRequest().authenticated().and()
 		.csrf().disable().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)// A SESSAO
-													    // SERÁ
+													    // SERï¿½
 													    // STATELESS,
-													    // POIS SERÁ
+													    // POIS SERï¿½
 													    // VIA JWT,
 													    // ENTRETANDO
-													    // SERÁ
-													    // NECESSÁRIO
+													    // SERï¿½
+													    // NECESSï¿½RIO
 													    // CRIAR UM
 													    // CONTROLLER
 													    // PARA

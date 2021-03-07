@@ -8,6 +8,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,19 +22,16 @@ import br.com.guelaio.gerenciadordeestoque.services.TokenService;
 @RequestMapping("/auth")
 public class AutenticacaoController {
 
-    private final AuthenticationManager authManager;
-
-    private final TokenService tokenService;
+    @Autowired
+    private AuthenticationManager authManager;
 
     @Autowired
-    public AutenticacaoController(AuthenticationManager authManager, TokenService tokenService) {
-	this.authManager = authManager;
-	this.tokenService = tokenService;
-    }
+    private TokenService tokenService;
 
     @PostMapping
     public ResponseEntity<TokenDto> autenticar(@RequestBody @Valid LoginDto login) {
 	UsernamePasswordAuthenticationToken dadosLogin = login.converter();
+//	printarStringCriptografada();
 	try {
 	    Authentication authentication = authManager.authenticate(dadosLogin);
 	    String token = tokenService.gerarToken(authentication);
@@ -42,5 +40,10 @@ public class AutenticacaoController {
 	    return ResponseEntity.badRequest().build();
 	}
     }
+    
+//    private void printarStringCriptografada() {
+//	BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+//	System.out.println(bCryptPasswordEncoder.encode("chupenis"));
+//    }
 
 }

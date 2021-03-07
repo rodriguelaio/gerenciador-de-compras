@@ -22,12 +22,12 @@ public class ProdutoCompra {
     private long id;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_compra") //Defino o nome que a coluna de junÁ„o ter·. O padr„o È NOMETABELA_NOMECAMPOPK
+    @JoinColumn(name = "id_compra") //Defino o nome que a coluna de jun√ß√£o ter√°. O padr√£o √© NOMETABELA_NOMECAMPOPK
     private Compra compra;
 
     @NotBlank
     @ManyToOne
-    @JoinColumn(name = "id_produto") //Defino o nome que a coluna de junÁ„o ter·. O padr„o È NOMETABELA_NOMECAMPOPK
+    @JoinColumn(name = "id_produto") //Defino o nome que a coluna de jun√ß√£o ter√°. O padr√£o √© NOMETABELA_NOMECAMPOPK
     private Produto produto;
 
     @NotNull
@@ -57,6 +57,10 @@ public class ProdutoCompra {
     @NotNull
     @Positive
     private double valorTotalLiquido;
+    
+    public ProdutoCompra() { //O JPA exige construtor padr√£o vazio
+	
+    }
 
     public ProdutoCompra(Compra compra, Produto produto, double quantidade, double valorUnitarioBruto, double valorDesconto,
 	    double percentualDesconto, double valorUnitarioLiquido, double valorTotalBruto, double valorTotalLiquido) {

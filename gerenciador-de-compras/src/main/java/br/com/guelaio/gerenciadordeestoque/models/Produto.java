@@ -7,6 +7,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
 
@@ -26,6 +28,10 @@ public class Produto {
     @NotBlank
     private String nome;
 
+    @OneToOne
+    @JoinColumn(name = "id_marca")
+    private Marca marca;
+
     @NotBlank
     @Column(name = "unidade_medida")
     @Enumerated(EnumType.STRING)
@@ -39,13 +45,15 @@ public class Produto {
     @Positive
     @Column(name = "peso_volume")
     private double pesoVolume;
-    
-    public Produto() {//O JPA exige construtor padrão vazio
-	
+
+    public Produto() { // O JPA exige construtor padrão vazio
+
     }
 
-    public Produto(String nome, UnidadeDeMedida unidadeDeMedida, CategoriaProduto categoria, double pesoVolume) {
+    public Produto(String nome, Marca marca, UnidadeDeMedida unidadeDeMedida, CategoriaProduto categoria,
+	    double pesoVolume) {
 	setNome(nome);
+	setMarca(marca);
 	setUnidadeDeMedida(unidadeDeMedida);
 	setCategoria(categoria);
 	setPesoVolume(pesoVolume);
@@ -61,6 +69,14 @@ public class Produto {
 
     private void setNome(String nome) {
 	this.nome = nome;
+    }
+
+    public Marca getMarca() {
+	return marca;
+    }
+
+    private void setMarca(Marca marca) {
+	this.marca = marca;
     }
 
     public UnidadeDeMedida getUnidadeDeMedida() {

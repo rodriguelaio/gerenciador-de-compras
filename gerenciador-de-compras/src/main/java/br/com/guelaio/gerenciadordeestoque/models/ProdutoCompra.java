@@ -1,7 +1,6 @@
 package br.com.guelaio.gerenciadordeestoque.models;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,6 +10,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.sun.istack.NotNull;
 
 @Entity
@@ -21,7 +21,8 @@ public class ProdutoCompra {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne//(fetch = FetchType.EAGER)
+    @JsonBackReference
     @JoinColumn(name = "id_compra") //Defino o nome que a coluna de junção terá. O padrão é NOMETABELA_NOMECAMPOPK
     private Compra compra;
 

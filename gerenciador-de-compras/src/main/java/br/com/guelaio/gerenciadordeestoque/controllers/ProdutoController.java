@@ -22,7 +22,7 @@ public class ProdutoController {
     @Autowired
     ProdutoService produtoService;
 
-    @GetMapping("/{id}")
+    @GetMapping("/{produtoId}")
     public ResponseEntity<Produto> findById(@PathVariable long produtoId) {
 	return ResponseEntity.ok(produtoService.findById(produtoId));
     }

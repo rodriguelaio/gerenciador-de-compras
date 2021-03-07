@@ -25,34 +25,38 @@ public class AutenticacaoViaTokenFilter extends OncePerRequestFilter {
     private UsuarioRepository usuarioRepository;
 
     public AutenticacaoViaTokenFilter(TokenService tokenService, UsuarioRepository usuarioRepository) {
-        this.tokenService = tokenService;
-        this.usuarioRepository = usuarioRepository;
+	this.tokenService = tokenService;
+	this.usuarioRepository = usuarioRepository;
     }
 
     @Override
-    protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
-        String token = recuperarToken(httpServletRequest);
-        boolean valido = tokenService.isTokenValido(token);
+    protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse,
+	    FilterChain filterChain) throws ServletException, IOException {
+	String token = recuperarToken(httpServletRequest);
+	boolean valido = tokenService.isTokenValido(token);
 
-        if(valido) autenticarCliente(token);
+	if (valido)
+	    autenticarCliente(token);
 
-        filterChain.doFilter(httpServletRequest, httpServletResponse);
+	filterChain.doFilter(httpServletRequest, httpServletResponse);
     }
 
     private String recuperarToken(HttpServletRequest httpServletRequest) {
-        String token = httpServletRequest.getHeader("Authorization");
-        if(Objects.isNull(token) || token.isEmpty() || !token.startsWith("Bearer ")) return null;
-        return token.substring(7);
+	String token = httpServletRequest.getHeader("Authorization");
+	if (Objects.isNull(token) || token.isEmpty() || !token.startsWith("Bearer "))
+	    return null;
+	return token.substring(7);
     }
 
     private void autenticarCliente(String token) {
-        Long idUsuario = tokenService.getIdUsuario(token);
-        Usuario usuario = usuarioRepository.findById(idUsuario).orElseThrow(RuntimeException::new);
-        List<GrantedAuthority> authorityListAdmin = AuthorityUtils.createAuthorityList("ROLE_USER", "ROLE_ADMIN");
-        List<GrantedAuthority> authorityListUser = AuthorityUtils.createAuthorityList("ROLE_USER");
-        UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(usuario, null, usuario.isAdmin() ? authorityListAdmin : authorityListUser);
+	Long idUsuario = tokenService.getIdUsuario(token);
+	Usuario usuario = usuarioRepository.findById(idUsuario).orElseThrow(RuntimeException::new);
+	List<GrantedAuthority> authorityListAdmin = AuthorityUtils.createAuthorityList("ROLE_USER", "ROLE_ADMIN");
+	List<GrantedAuthority> authorityListUser = AuthorityUtils.createAuthorityList("ROLE_USER");
+	UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(usuario, null,
+		usuario.isAdmin() ? authorityListAdmin : authorityListUser);
 
-        //CONSIDERE QUE ESTÁ AUTENTICADO
-        SecurityContextHolder.getContext().setAuthentication(authentication);
+	// CONSIDERE QUE ESTÁ AUTENTICADO
+	SecurityContextHolder.getContext().setAuthentication(authentication);
     }
 }

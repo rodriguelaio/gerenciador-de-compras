@@ -33,3 +33,6 @@ INSERT INTO compra (data) VALUES ('2021-03-07');
 INSERT INTO produto_compra (id_compra, id_produto, quantidade, valor_unitario_bruto, valor_desconto, percentual_desconto,
 							valor_unitario_liquido, valor_total_bruto, valor_total_liquido)
 							VALUES (1, 1, 10, 25, 1.5, 6, 23.5, 250, 235);
+INSERT INTO produto_compra (id_compra, id_produto, quantidade, valor_unitario_bruto, valor_desconto, percentual_desconto,
+							valor_unitario_liquido, valor_total_bruto, valor_total_liquido)
+							VALUES (1, 4, 1, 25, 1.5, 6, 23.5, 25, 23.5);

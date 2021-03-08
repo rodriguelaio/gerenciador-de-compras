@@ -36,3 +36,6 @@ INSERT INTO produto_compra (id_compra, id_produto, quantidade, valor_unitario_br
 INSERT INTO produto_compra (id_compra, id_produto, quantidade, valor_unitario_bruto, valor_desconto, percentual_desconto,
 							valor_unitario_liquido, valor_total_bruto, valor_total_liquido)
 							VALUES (1, 4, 1, 25, 1.5, 6, 23.5, 25, 23.5);
+INSERT INTO produto_compra (id_compra, id_produto, quantidade, valor_unitario_bruto, valor_desconto, percentual_desconto,
+							valor_unitario_liquido, valor_total_bruto, valor_total_liquido)
+							VALUES (1, 14, 12, 3.99, 0, 0, 3.99, 47.88, 47.88);

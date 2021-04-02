@@ -12,8 +12,6 @@ import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
 
-import com.sun.istack.NotNull;
-
 import br.com.guelaio.gerenciadordeestoque.enums.CategoriaProduto;
 import br.com.guelaio.gerenciadordeestoque.enums.UnidadeDeMedida;
 
@@ -41,7 +39,6 @@ public class Produto {
     @Enumerated(EnumType.STRING)
     private CategoriaProduto categoria;
 
-    @NotNull
     @Positive
     @Column(name = "peso_volume")
     private double pesoVolume;

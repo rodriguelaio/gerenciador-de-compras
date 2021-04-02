@@ -11,7 +11,7 @@
 	</parent>
 
 	<groupId>br.com.guelaio</groupId>
-	<artifactId>gerenciador-de-estoque</artifactId>
+	<artifactId>gerenciador-de-estoque-api</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>gerenciador-de-estoque</name>

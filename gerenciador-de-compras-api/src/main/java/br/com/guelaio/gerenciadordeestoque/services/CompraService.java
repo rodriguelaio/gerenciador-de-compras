@@ -6,6 +6,6 @@ public interface CompraService {
 
     Compra save(Compra compra);
     
-    Compra findById(long compraId);
+    Compra findById(Long compraId);
     
 }

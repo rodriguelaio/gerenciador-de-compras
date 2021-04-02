@@ -16,11 +16,12 @@ public class CompraServiceImplementation implements CompraService {
 
     @Override
     public Compra save(Compra compra) {
-	return compraRepository.save(compra);
+	compraRepository.save(compra);
+	return findById(compra.getId());
     }
 
     @Override
-    public Compra findById(long compraId) {
+    public Compra findById(Long compraId) {
 	return compraRepository.findById(compraId)
 		.orElseThrow(() -> new ResourceNotFoundException("Compra não localizada"));
     }

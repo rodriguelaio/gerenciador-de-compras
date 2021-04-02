@@ -16,7 +16,7 @@ import br.com.guelaio.gerenciadordeestoque.models.Produto;
 import br.com.guelaio.gerenciadordeestoque.services.ProdutoService;
 
 @RestController
-@RequestMapping("/produto")
+@RequestMapping("/Produto")
 public class ProdutoController {
 
     @Autowired

@@ -17,7 +17,7 @@ public class Marca {
     @NotNull
     private String nome;
 
-    public Marca() {
+    public Marca() { // O JPA exige construtor padrão vazio
 
     }
 

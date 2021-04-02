@@ -1,0 +1,82 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#titulo {
+  font-family: sans-serif;
+  margin-left: 20%;
+}
+
+#botao_submit {
+  margin-left: 70%;
+}
+
+.campo {
+  font-family: sans-serif;
+  margin-left: 20%;
+  justify-content: center;
+}
+
+.itens {
+  font-family: sans-serif;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.codigo {
+  text-align: center;
+}
+
+.numerico {
+  text-align: right;
+}
+
+.texto {
+  text-align: center;
+}
+
+#itens {
+  display: table;
+  background-color: black;
+  border: 1px solid black;
+  border-collapse: separate;
+  border-spacing: 2px;
+}
+
+#itens tr:nth-child(even) {
+  background-color: mediumturquoise;
+}
+
+#itens tr:nth-child(odd) {
+  background-color: mediumturquoise;
+}
+
+th {
+  color: white;
+  background-color: gray;
+  width: 20%;
+}
+
+input,
+table,
+button {
+  border-radius: 5px;
+  box-shadow: 2px, 2px, 2px black;
+}
+
+.botao {
+  background: darkturquoise;
+  font-size: 1.2em;
+  border: 0;
+  padding: 0.2em 0.6em;
+  text-shadow: 1px, 1px, 1px black;
+  position: absolute;
+  left: 16%;
+  transform: translate(-50%, -50%);
+}
+
+.botao:hover {
+  background: cornflowerblue;
+  text-shadow: none;
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="formulario.css">
+    <script src="formulario.js"></script>
+    <title>Cadastro de Compra</title>
+</head>
+
+<body>
+    <h1 id="titulo">Cadastro de Compras Sinistrera</h1><br><br>
+
+    <div class="campo">
+        <label for="data"><strong>Data</strong></label>
+        <input type="date" name="data" id="data">
+        <br><br><br><br>
+    </div>
+
+    <button class="botao" type="button" onclick="inserirLinha()">Inserir Linha</button>
+    <button class="botao" id="botao_submit" type="submit" onclick="inserirLinha()">Finalizar Cadastro</button><br><br>
+
+    <div class="itens">
+        <label for="itens"><strong>Itens</strong></label>
+        <table id="itens">
+            <tr>
+                <th>id produto</th>
+                <th>produto</th>
+                <th>quantidade</th>
+                <th>valor unitário bruto</th>
+                <th>valor desconto</th>
+                <th>percentual desconto</th>
+                <th>valor unitario liquido</th>
+                <th>valor total bruto</th>
+                <th>valor total liquido</th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>
+                    <input class="codigo" id="id_0" type="number" required min="1"></input>
+                </td>
+                <td>
+                    <input class="texto" id="produto_0" type="text" readonly></input>
+                </td>
+                <td>
+                    <input class="numerico" id="quantidade_0" type="number" required step="1" min="1"
+                        onblur="calcularTotalBruto(this); calcularTotalLiquido(this)"></input>
+                </td>
+                <td>
+                    <input class="numerico" id="valorUnitarioBruto_0" type="number" required step="0.01" min="0.01"
+                        onblur="calcularTotalBruto(this); calcularPercentualDeDesconto(this)"></input>
+                </td>
+                <td>
+                    <input class="numerico" id="valorDesconto_0" type="number" required step="0.01" min="0.01"
+                        onblur="calcularPercentualDeDesconto(this); calcularValorUnitarioLiquido(this); calcularTotalLiquido(this)"></input>
+                </td>
+                <td>
+                    <input class="numerico" id="percentualDesconto_0" type="number" step="0.01" min="0.01"
+                        readonly></input>
+                </td>
+                <td>
+                    <input class="numerico" id="valorUnitarioLiquido_0" type="number" step="0.01" min="0.01"
+                        readonly></input>
+                </td>
+                <td>
+                    <input class="numerico" id="valorTotalBruto_0" type="number" step="0.01" min="0.01"
+                        readonly></input>
+                </td>
+                <td>
+                    <input class="numerico" id="valorTotalLiquido_0" type="number" step="0.01" min="0.01"
+                        readonly></input>
+                </td>
+                <td>
+                    <input id="delete_0" type="button" value="  -  " onclick="deletarLinha(this)"></input>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

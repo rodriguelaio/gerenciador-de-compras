@@ -26,7 +26,7 @@ public class CompraController {
     }
     
     @GetMapping("/{compraId}")
-    public ResponseEntity<Compra> findById(@PathVariable long compraId){
+    public ResponseEntity<Compra> findById(@PathVariable Long compraId){
 	return ResponseEntity.ok().body(compraService.findById(compraId));
     }
     
